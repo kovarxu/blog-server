@@ -37,7 +37,7 @@ module.exports = {
                 }
             }
             ctx.body = {
-                ret: mlogin[1],
+                ret: +mlogin[1],
                 errmsg: mlogin[2]
             }
         }

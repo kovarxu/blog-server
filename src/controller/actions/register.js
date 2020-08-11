@@ -26,13 +26,12 @@ module.exports = {
                 }
             }
             ctx.body = {
-                ret: mlogin[1],
+                ret: +mlogin[1],
                 errmsg: mlogin[2]
             }
             return;
         }
         
-        ctx.session.user = username;
         ctx.body = {
             ret: 0,
             errmsg: ''
