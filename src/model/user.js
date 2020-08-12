@@ -1,9 +1,16 @@
 const { Schema, model } = global.moon;
 
 const UserSchema = new Schema({
-    name: String,
+    name: {
+        type: String,
+        unique: true
+    },
     email: String,
-    password: String
+    password: {
+        type: String,
+        minlength: 8,
+        maxlength: 30
+    }
 })
 
 const UserModel = model('User', UserSchema);

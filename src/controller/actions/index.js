@@ -1,11 +1,7 @@
 const login = require('./login');
-const logout = require('./logout');
-const register = require('./register');
-const checkLoginStatus = require('./checkLoginStatus');
+const article = require('./article');
 
 module.exports = {
-    login,
-    logout,
-    register,
-    checkLoginStatus
+    ...login,
+    ...article
 }

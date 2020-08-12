@@ -5,10 +5,11 @@ const logger = log4js.getLogger();
 
 // api
 module.exports = async (ctx, next) => {
-    const match = ctx.path.match(/^\/(action|api)\/([^\/]*)$/);
+    const match = ctx.path.match(/^\/(action|api)\/(.*)$/);
     if (match) {
         const [_, type, item] = match;
         if (type === 'action' && item in actions) {
+            ctx.type = 'application/json';
             const { method, action } = actions[item];
             if (matchMethods(ctx.method, method)) {
                 const params = ctx.method === 'GET' ? ctx.query : ctx.request.body;

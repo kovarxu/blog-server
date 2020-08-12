@@ -4,7 +4,6 @@ const { wrappedDBMan } = require('../utils/db');
 const { UserSchema, UserModel } = require('../model/user');
 
 const userExists = wrappedDBMan(async (name) => {
-    logger.debug(UserModel)
     return await UserModel.findOne({ name }).exec();
 })
 
