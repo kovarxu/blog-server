@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 module.exports = {
     method: 'post',
-    async action(ctx, { title, body, describe, tags }) {
+    async action(ctx, { title, body, describe, tags, isShow, category }) {
         ctx.type = 'application/json';
 
         const user = ctx.session.user;
@@ -46,7 +46,9 @@ module.exports = {
             author: userId,
             body,
             describe,
-            tags
+            tags,
+            isShow,
+            category
         })
 
         if (result === true) {

@@ -49,7 +49,7 @@ module.exports = {
         } else {
             ctx.body = {
                 ret: 10002,
-                errmsg: '修改文章成功'
+                errmsg: '修改文章失败'
             }
         }
     }

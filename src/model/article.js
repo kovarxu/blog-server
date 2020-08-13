@@ -19,6 +19,15 @@ const ArticleSchema = new Schema({
     body: String,
     describe: String,
     tags: [String],
+    isShow: {
+        type: Number,
+        enum: [0, 1]
+    }, // 是否展示出来
+    category: { // 类别，区分博客、心得、教程等
+        type: String,
+        enum: ['blog', 'tutorial', 'thinking'],
+        required: true
+    },
     addTime: {
         type: Date,
         default: Date.now
@@ -27,19 +36,14 @@ const ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    comments: [{
-        user: String,
-        time: {
-            type: Date,
-            default: Date.now
-        },
-        content: String
-    }],
+    comments: [Schema.Types.ObjectId],
     support: {
         type: Number,
         default: 0
     },
 })
+
+ArticleSchema.index({ isShow: 1, addTime: 1 });
 
 const ArticleModel = model('Article', ArticleSchema);
 

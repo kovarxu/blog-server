@@ -6,7 +6,8 @@ module.exports = {
         ctx.body = {
           ret: 0,
           data: {
-            isLogin: user ? 1: 0
+            isLogin: user ? 1: 0,
+            user
           }
         }
     }
