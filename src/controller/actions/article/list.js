@@ -5,10 +5,10 @@ module.exports = {
   method: 'get',
   async action(ctx, { page, limit = 10, category, isShow }) {
     const start = (page - 1) * limit;
-    const articleList = await findArticle(start, limit, category, isShow);
+    const articleList = await findArticle(start, +limit, category, +isShow);
     const articleInfo = await articleStat();
 
-    if (!articleList || articleList.length === 0) {
+    if (!articleList) {
       ctx.body = {
         ret: 3031,
         errmsg: '记录为空'

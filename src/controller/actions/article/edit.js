@@ -3,7 +3,7 @@ const { userExists } = require('../../../service/user');
 
 module.exports = {
     method: 'post',
-    async action(ctx, { id, title, body, describe, tags }) {
+    async action(ctx, { id, title, body, describe, tags, isShow, category }) {
         ctx.type = 'application/json';
 
         const user = ctx.session.user;
@@ -38,12 +38,15 @@ module.exports = {
             title,
             body,
             describe,
-            tags
+            tags, 
+            isShow, 
+            category
         })
 
         if (result === true) {
             ctx.body = {
                 ret: 0,
+                data: { id },
                 errmsg: '修改文章成功'
             }
         } else {

@@ -10,7 +10,9 @@ module.exports = {
         body = '',
         addTime,
         comments,
-        support = 0
+        support = 0,
+        category,
+        tags,
       } = article;
 
       ctx.body = {
@@ -21,6 +23,8 @@ module.exports = {
           addTime,
           comments,
           support,
+          category,
+          tags
         },
         errmsg: ''
       }

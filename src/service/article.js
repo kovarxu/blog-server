@@ -33,7 +33,7 @@ const findArticle = wrappedDBMan(async (start, limit, category, isShow) => {
     if (category) {
         findConditions.category = category;
     }
-    if (+isShow === 1 || +isShow === 0) {
+    if (isShow === 1 || isShow === 0) {
         findConditions.isShow = isShow;
     }
     

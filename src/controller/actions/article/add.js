@@ -54,6 +54,7 @@ module.exports = {
         if (result === true) {
             ctx.body = {
                 ret: 0,
+                data: { id },
                 errmsg: '添加文章成功'
             }
         } else {
