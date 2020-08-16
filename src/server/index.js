@@ -32,7 +32,14 @@ app.use(cors({
 }));
 
 // body parser
-app.use(KoaBody());
+app.use(KoaBody({
+    multipart: true,
+    formidable: {
+        // multiples: true, // 接受多文件上传，默认为false
+        // uploadDir: os.tmpDir() 文件上传路径，默认为系统临时文件夹
+        keepExtensions: true // 保留文件原本的扩展名，否则没有扩展名，默认为false
+    }
+}));
 
 router.get('/', (ctx) => {
     ctx.body = `<div>Hello</div>

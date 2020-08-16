@@ -4,7 +4,8 @@
   "description": "koa, koa-session, koa-body-parser, koa-router",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server"
+    "dev": "nodemon src/server",
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,7 @@
   "dependencies": {
     "cookie": "^0.4.1",
     "cookie-parser": "^1.4.5",
+    "fs-extra": "^9.0.1",
     "koa-body": "^4.2.0",
     "koa-router": "^9.1.0",
     "koa-session": "^6.0.0",
