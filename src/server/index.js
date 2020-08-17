@@ -5,6 +5,7 @@ const KoaStaticServer = require('koa-static-server');
 const KoaSession = require('koa-session');
 const cors = require('../middlewares/cors');
 const sessionOptions = require('../middlewares/session');
+const fs = require('fs');
 
 // logger
 const log4js = require('log4js');
@@ -42,15 +43,7 @@ app.use(KoaBody({
 }));
 
 router.get('/', (ctx) => {
-    ctx.body = `<div>Hello</div>
-        <div>session: ${JSON.stringify(ctx.session)}</div>
-    `;
-    const view = ctx.session.view;
-    if (view) {
-        ctx.session.view ++;
-    } else {
-        ctx.session.view = 1;
-    }
+    ctx.body = fs.readFileSync('./static/index.html');
     ctx.type = 'html';
 })
 
