@@ -21,8 +21,16 @@ const searchArticle = wrappedDBMan(async (id) => {
     return await ArticleModel.findOne({ id }).exec();
 })
 
-const articleStat = wrappedDBMan(async () => {
-    const count = await ArticleModel.count();
+const articleStat = wrappedDBMan(async (category, isShow) => {
+    const findConditions = {};
+    if (category) {
+        findConditions.category = category;
+    }
+    if (isShow === 1 || isShow === 0) {
+        findConditions.isShow = isShow;
+    }
+
+    const count = await ArticleModel.count(findConditions);
     return {
         count
     }

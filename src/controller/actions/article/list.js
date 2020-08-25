@@ -6,7 +6,7 @@ module.exports = {
   async action(ctx, { page, limit = 10, category, isShow }) {
     const start = (page - 1) * limit;
     const articleList = await findArticle(start, +limit, category, +isShow);
-    const articleInfo = await articleStat();
+    const articleInfo = await articleStat(category, +isShow);
 
     if (!articleList) {
       ctx.body = {
@@ -19,7 +19,7 @@ module.exports = {
         data: {
           count: articleInfo.count,
           list: articleList.map(item => selectFrom(item, [
-            'title', 'describe', 'tags', 'addTime', 'support', 'id', 'modifyTime'
+            'title', 'describe', 'tags', 'addTime', 'support', 'id', 'modifyTime', 'category'
           ]))
         },
         errmsg: ''
