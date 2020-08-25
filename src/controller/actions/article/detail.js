@@ -8,6 +8,7 @@ module.exports = {
       const {
         title,
         body = '',
+        describe = '',
         addTime,
         comments,
         support = 0,
@@ -20,6 +21,7 @@ module.exports = {
         data: {
           title,
           body,
+          describe,
           addTime,
           comments,
           support,
