@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - 3001:3001
+    volumes:
+      - "./:/app"
+    environment:
+      MONGO_USR: ${MONGO_USR}
+      MONGO_PWD: ${MONGO_PWD}
+      MONGO_HOST: mon
+      MONGO_DB: ${MONGO_DB}
+    working_dir: /app
+  
+  mon:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/Documents/db/mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USR}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PWD}

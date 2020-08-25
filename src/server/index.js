@@ -13,7 +13,9 @@ const logger = log4js.getLogger();
 logger.level = 'debug';
 
 // mongoose
-global.moon = require('../db');
+const { mongoose, connect } = require('../db');
+global.moon = mongoose;
+connect();
 
 const api = require('../middlewares/api');
 
