@@ -4,7 +4,7 @@ const KoaBody = require('koa-body');
 const KoaStaticServer = require('koa-static-server');
 const KoaSession = require('koa-session');
 const cors = require('../middlewares/cors');
-const sessionOptions = require('../middlewares/session');
+const sessionOptions = require('../middlewares/session'); // 存储session的位置，目前是存储在本地，期望存到redis
 const fs = require('fs');
 
 // logger
