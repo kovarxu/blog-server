@@ -23,9 +23,9 @@ const ArticleSchema = new Schema({
         type: Number,
         enum: [0, 1]
     }, // 是否展示出来
-    category: { // 类别，区分博客、心得、教程等
+    category: { // 类别，区分博客、心得、教程、实用技能等
         type: String,
-        enum: ['blog', 'tutorial', 'thinking'],
+        enum: ['blog', 'tutorial', 'thinking', 'skill'],
         required: true
     },
     addTime: {

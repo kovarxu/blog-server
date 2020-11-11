@@ -1,4 +1,5 @@
 version: "3.7"
+# 测试环境的docker配置，生产环境的利用production.yml替换了一些配置
 
 services:
   app:
@@ -8,6 +9,7 @@ services:
       - 3001:3001
       - 80:80
     volumes:
+      # 映射当前目录到app目录
       - "./:/app"
     environment:
       MONGO_USR: ${MONGO_USR}
@@ -21,6 +23,7 @@ services:
     ports:
       - 27017:27017
     volumes:
+      # 映射本地的mongo数据库文件
       - ~/Documents/db/mongo:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USR}
