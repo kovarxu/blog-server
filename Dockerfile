@@ -1,7 +1,7 @@
 # DOCKER mirror "https://mirror.ccs.tencentyun.com"
 # use the following command to start
 # dev: `docker run -dp 3001:3001 blog-server`
-# build: `docker run -dp 80:80 blog-server npm run build`
+# build: `docker run -dp 8080:8080 blog-server npm run build`
 FROM node:12-alpine
 
 WORKDIR /usr/local/app

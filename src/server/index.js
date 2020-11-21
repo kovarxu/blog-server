@@ -63,7 +63,7 @@ app.use(KoaStaticServer({
 // api middleware
 app.use(api);
 
-const port = process.env.NODE_ENV === 'production' ? 80 : 3001;
+const port = process.env.NODE_ENV === 'production' ? 8080 : 3001;
 
 app.listen(port, () => {
     console.log('server running on port ' + port);
