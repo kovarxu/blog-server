@@ -1,15 +1,21 @@
 const { Schema, model } = global.moon;
+const autoIncrement = require('mongoose-auto-increment');
 
+// Comment
 const CommentSchema = new Schema({
-    email: String,
     time: {
         type: Date,
         default: Date.now
     },
-    content: String
+    articleId: String, // 目标文章Id
+    targetId: Number, // 对评论的评论
+    content: String,
+    commenter: String // 评论人昵称
 })
 
-const CommentModel = model('User', CommentSchema);
+CommentSchema.plugin(autoIncrement.plugin, 'Comment');
+
+const CommentModel = model('Comment', CommentSchema);
 
 module.exports = {
     CommentSchema,

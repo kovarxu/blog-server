@@ -1,6 +1,6 @@
 const { addArticle } = require('../../../service/article');
 const { userExists } = require('../../../service/user');
-const crypto = require('crypto');
+const { getHash } = require('../../../utils/tool');
 
 module.exports = {
     method: 'post',
@@ -35,10 +35,7 @@ module.exports = {
             return;
         }
 
-        const hash = crypto.createHash('md5');
-        hash.update(Date.now() + '');
-        hash.update(title);
-        const id = hash.digest('hex').slice(2, 10);
+        const id = getHash(title);
 
         const result = await addArticle({
             id,

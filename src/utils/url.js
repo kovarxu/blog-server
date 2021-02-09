@@ -13,6 +13,15 @@ function matchMethods(reqMethod, allowMethods) {
     }
 }
 
+function escape(str = '') {
+    return str.replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/&/g, '&amp;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#39;');
+}
+
 module.exports = {
-    matchMethods
+    matchMethods,
+    escape
 }

@@ -36,5 +36,8 @@ module.exports = {
             ret: 0,
             errmsg: ''
         };
+
+        // 评论时创建临时用户有用到
+        return username;
     }
 }

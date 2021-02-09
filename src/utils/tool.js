@@ -1,6 +1,12 @@
+const crypto = require('crypto');
+
 function selectFrom(obj, attrList) {
-  return attrList.reduce((o, attrKey) => {
-    o[attrKey] = obj[attrKey];
+  return attrList.reduce((o, attr) => {
+    if (attr.key) {
+      o[attr.key] = obj[attr.origKey];
+    } else {
+      o[attr] = obj[attr];
+    }
     return o;
   }, {});
 }
@@ -39,7 +45,15 @@ const formatTime = (time, format = '') => {
   }
 }
 
+const getHash = (extraData = '') => {
+  const hash = crypto.createHash('md5');
+  hash.update(Date.now() + '');
+  extraData && hash.update(extraData);
+  return hash.digest('hex').slice(2, 10);
+}
+
 module.exports = {
   selectFrom,
-  formatTime
+  formatTime,
+  getHash
 }

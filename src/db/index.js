@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
-const { mongoUrl } = require('../config');
+const autoIncrement = require('mongoose-auto-increment');
 const log4js = require('log4js');
+const { mongoUrl } = require('../config');
 const logger = log4js.getLogger();
+
+// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// by default, you need to set it to false.
+mongoose.set('useFindAndModify', false);
+
+// auto increment plugin
+autoIncrement.initialize(mongoose.connection);
 
 // connect mongoose database
 function connect() {
